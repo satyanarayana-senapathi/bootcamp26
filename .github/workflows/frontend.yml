@@ -4,6 +4,7 @@ on:
     paths:
       - 'frontend/**'
       - '!frontend/src/mockData/**'
+      - '.github/workflows/frontend.yml'
 jobs:
   build:
     runs-on: ubuntu-latest
