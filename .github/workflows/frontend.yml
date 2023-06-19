@@ -1,0 +1,67 @@
+name: build react app image and push to github packages
+on:
+  push:
+    paths:
+      - 'frontend/**'
+      - '!frontend/src/mockData/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
+
+      - name: Build application
+        run: npm run build
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+         registry: ghcr.io
+         username: ${{ github.actor }}
+         password: ${{ secrets.GIT_PAT }}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/${{ github.actor }}/bootcamp26-app-frontend:v${{ github.run_number }}
+    
+      - name: SSH into remote server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.BOOTCAMP_EC2_KEY }} 
+          RUN_NUMBER: ${{ github.run_number }}
+          AWS_DNS : ${{ secrets.AWS_FRONTEND_DNS}}
+          USERNAME: ${{ github.actor }}
+          PAT: ${{ secrets.GIT_PAT }}
+        run: |
+            echo "$SSH_PRIVATE_KEY" > ~/ssh_private_key
+            chmod 400 ~/ssh_private_key
+            ssh -i ~/ssh_private_key -o StrictHostKeyChecking=no ubuntu@$AWS_DNS "
+                docker login ghcr.io -u $USERNAME --password $PAT;
+                docker stop $(docker ps -aq);
+                docker rmi $(docker images -q);
+                docker pull ghcr.io/satyanarayana-zemoso/bootcamp26-app-frontend:v$RUN_NUMBER;
+                docker logout ghcr.io;
+            "
+            rm -rf ~/ssh_private_key
+        
