@@ -55,7 +55,7 @@ module.exports = {
     }),
     new EnvironmentPlugin({
       REACT_APP_API_ENDPOINT: JSON.stringify(
-        process.env.REACT_APP_API_ENDPOINT
+        process.env.REACT_APP_API_ENDPOINT || 'http://34.205.77.110'
       ),
     }),
   ],
