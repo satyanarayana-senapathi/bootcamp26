@@ -36,7 +36,7 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./backend
           push: true
           tags: ghcr.io/satyanarayana-zemoso/bootcamp26-app-backend:v${{ github.run_number }}
           dockerfile: Dockerfile
