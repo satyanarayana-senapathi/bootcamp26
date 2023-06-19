@@ -56,7 +56,7 @@ jobs:
             docker login ghcr.io -u $USERNAME --password $PAT;
             docker stop $(sudo docker ps -aq);
             docker rmi $(sudo docker images -q);
-            docker run -d -p 8081:8090 ghcr.io/satyanarayana-zemoso/bootcamp26-app-backend:v$RUN_NUMBER;
+            docker run -d -p 80:8090 ghcr.io/satyanarayana-zemoso/bootcamp26-app-backend:v$RUN_NUMBER;
             docker logout ghcr.io;
             "
             rm -rf ~/ssh_private_key

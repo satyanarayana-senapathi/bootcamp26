@@ -46,7 +46,7 @@ jobs:
             docker stop $(docker ps -aq);
             docker rmi $(docker images -q);
             docker pull ghcr.io/satyanarayana-zemoso/bootcamp26-app-database:v$RUN_NUMBER;
-            docker run --name database -d -p 3306:3306  -e MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }} -e MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }} -e MYSQL_USER=ghcr.io/$USERNAME/database:v$RUN_NUMBER;
+            docker run --name database -d -p 3306:3306  -e MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }} -e MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }} ghcr.io/$USERNAME/database:v$RUN_NUMBER;
             docker logout ghcr.io;
         "
         rm -rf ~/ssh_private_key
