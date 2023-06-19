@@ -1,0 +1,203 @@
+{
+  "current": [
+    {
+      "src": "/assets/book.jpg",
+      "alt": "zemoso",
+      "author": "author name 1",
+      "category": "category 1",
+      "title": "title 1",
+      "totalPage": 200,
+      "leftPage": 100
+    },
+    {
+      "src": "/assets/book.jpg",
+      "alt": "zemoso",
+      "author": "author name 2",
+      "category": "category 2",
+      "title": "title 2",
+      "totalPage": 400,
+      "leftPage": 200
+    },
+    {
+      "src": "/assets/book.jpg",
+      "alt": "zemoso",
+      "author": "author name 3",
+      "category": "category 3",
+      "title": "title 3",
+      "totalPage": 400,
+      "leftPage": 200
+    },
+    {
+      "src": "/assets/book.jpg",
+      "alt": "zemoso",
+      "author": "author name 4",
+      "category": "category 4",
+      "title": "title 4",
+      "totalPage": 400,
+      "leftPage": 200
+    }
+  ],
+  "explore": [
+    {
+      "src": "/assets/searchbooks/book.png",
+      "alt": "zemoso",
+      "author": "Yakuza",
+      "category": "Chemistry",
+      "title": "Physics Life",
+      "avgRating": 3.5,
+      "totalRating": 200,
+      "description": "Nature chemistry deals with different biocatalytic approaches to transform phenols by adding different neurons",
+      "authorImg": "/assets/avatar.jpg",
+      "id": 0
+    },
+    {
+      "src": "/assets/searchbooks/book.png",
+      "alt": "zemoso",
+      "author": "J D Lee",
+      "category": "Chemistry",
+      "title": "Inorganic chemistry",
+      "avgRating": 3.5,
+      "totalRating": 200,
+      "description": "Nature chemistry deals with different biocatalytic approaches to transform phenols by adding different neurons",
+      "authorImg": "/assets/avatar.jpg",
+      "id": 1
+    },
+    {
+      "src": "/assets/searchbooks/book.png",
+      "alt": "zemoso",
+      "author": "J D Lee",
+      "category": "Chemistry",
+      "title": "Organic chemistry",
+      "avgRating": 3.5,
+      "totalRating": 200,
+      "description": "Nature chemistry deals with different biocatalytic approaches to transform phenols by adding different neurons",
+      "authorImg": "/assets/avatar.jpg",
+      "id": 2
+    },
+    {
+      "src": "/assets/searchbooks/book.png",
+      "alt": "zemoso",
+      "author": "J D Lee",
+      "category": "Chemistry",
+      "title": "Inorganic chemistry",
+      "avgRating": 3.5,
+      "totalRating": 200,
+      "description": "Nature chemistry deals with different biocatalytic approaches to transform phenols by adding different neurons",
+      "authorImg": "/assets/avatar.jpg",
+      "id": 3
+    },
+    {
+      "src": "/assets/searchbooks/book.png",
+      "alt": "zemoso",
+      "author": "J D Lee",
+      "category": "Chemistry",
+      "title": "Inorganic chemistry",
+      "avgRating": 3.5,
+      "totalRating": 200,
+      "description": "Nature chemistry deals with different biocatalytic approaches to transform phenols by adding different neurons",
+      "authorImg": "/assets/avatar.jpg",
+      "id": 4
+    },
+    {
+      "src": "/assets/searchbooks/book.png",
+      "alt": "zemoso",
+      "author": "J D Lee",
+      "category": "Chemistry",
+      "title": "Inorganic chemistry",
+      "avgRating": 3.5,
+      "totalRating": 200,
+      "description": "Nature chemistry deals with different biocatalytic approaches to transform phenols by adding different neurons",
+      "authorImg": "/assets/avatar.jpg",
+      "id": 5
+    },
+    {
+      "src": "/assets/searchbooks/book.png",
+      "alt": "zemoso",
+      "author": "J D Lee",
+      "category": "Chemistry",
+      "title": "Inorganic chemistry",
+      "avgRating": 3.5,
+      "totalRating": 200,
+      "description": "Nature chemistry deals with different biocatalytic approaches to transform phenols by adding different neurons",
+      "authorImg": "/assets/avatar.jpg",
+      "id": 6
+    },
+    {
+      "src": "/assets/searchbooks/book.png",
+      "alt": "zemoso",
+      "author": "J D Lee",
+      "category": "Chemistry",
+      "title": "Inorganic chemistry",
+      "avgRating": 3.5,
+      "totalRating": 200,
+      "description": "Nature chemistry deals with different biocatalytic approaches to transform phenols by adding different neurons",
+      "authorImg": "/assets/avatar.jpg",
+      "id": 7
+    },
+    {
+      "src": "/assets/searchbooks/book.png",
+      "alt": "zemoso",
+      "author": "J D Lee",
+      "category": "Chemistry",
+      "title": "Inorganic chemistry",
+      "avgRating": 3.5,
+      "totalRating": 200,
+      "description": "Nature chemistry deals with different biocatalytic approaches to transform phenols by adding different neurons",
+      "authorImg": "/assets/avatar.jpg",
+      "id": 8
+    },
+    {
+      "src": "/assets/searchbooks/book.png",
+      "alt": "zemoso",
+      "author": "J D Lee",
+      "category": "Chemistry",
+      "title": "Inorganic chemistry",
+      "avgRating": 3.5,
+      "totalRating": 200,
+      "description": "Nature chemistry deals with different biocatalytic approaches to transform phenols by adding different neurons",
+      "authorImg": "/assets/avatar.jpg",
+      "id": 9
+    }
+  ],
+  "tasks": [
+    {
+      "src": "/assets/icons/reading40.svg",
+      "alt": "zemoso",
+      "title": "Currently Reading",
+      "value": 6
+    },
+    {
+      "src": "/assets/icons/bookmark40.svg",
+      "alt": "zemoso",
+      "title": "Books To Read",
+      "value": 74
+    },
+    {
+      "src": "/assets/icons/complete40.svg",
+      "alt": "zemoso",
+      "title": "Books Read",
+      "value": 30
+    },
+    {
+      "src": "/assets/icons/target40.svg",
+      "alt": "zemoso",
+      "title": "Target Per Year",
+      "value": 100
+    }
+  ],
+  "bookDetail": {
+    "author": "author name",
+    "category": "category name",
+    "title": "Inorganic Chemistry",
+    "src": "/assets/book.jpg",
+    "alt": "zemoso",
+    "avgRating": 4.5,
+    "description": "Nature chemistry deals with different biocatalytic approaches to transform phenols by adding different neurons",
+    "totalRatings": 3000,
+    "releaseDate": "1/1/2022",
+    "language": "English",
+    "totalPage": 200,
+    "pagesRead": 2,
+    "status": ""
+  }
+}

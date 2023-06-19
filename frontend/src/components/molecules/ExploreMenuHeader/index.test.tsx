@@ -1,0 +1,26 @@
+import React from "react";
+import { fireEvent, render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
+import MenuHeader from ".";
+import Close from "../../../assets/icons/close-24-px.svg";
+test("render a menu header", () => {
+  render(<MenuHeader handleClose={() => console.log("closed explore menu")} />);
+  const allTopics = screen.getByRole("tab", { name: /All topics/i });
+  const authors = screen.getByRole("tab", { name: /Authors/i });
+  const recentTitle = screen.getByRole("tab", { name: /Recent title/i });
+  const popularTitles = screen.getByRole("tab", { name: /Popular titles/i });
+  expect(allTopics).toHaveAttribute("aria-selected", "true");
+  expect(authors).toHaveAttribute("aria-selected", "false");
+  expect(recentTitle).toHaveAttribute("aria-selected", "false");
+  expect(popularTitles).toHaveAttribute("aria-selected", "false");
+  fireEvent.click(authors);
+  expect(allTopics).toHaveAttribute("aria-selected", "false");
+  expect(authors).toHaveAttribute("aria-selected", "true");
+  expect(recentTitle).toHaveAttribute("aria-selected", "false");
+  expect(popularTitles).toHaveAttribute("aria-selected", "false");
+  const imageElement = screen.getByRole("img");
+  expect(imageElement).toHaveAttribute("src", Close);
+  console.log = jest.fn();
+  fireEvent.click(imageElement);
+  expect(console.log).toHaveBeenCalledWith("closed explore menu");
+});
