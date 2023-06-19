@@ -7,9 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: frontend
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -42,7 +40,7 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./frontend
           push: true
           tags: ghcr.io/${{ github.actor }}/bootcamp26-app-frontend:v${{ github.run_number }}
     
