@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     defaults:
         run:
           working-directory: frontend
@@ -61,9 +62,9 @@ jobs:
             chmod 400 ~/ssh_private_key
             ssh -i ~/ssh_private_key -o StrictHostKeyChecking=no ubuntu@$AWS_DNS "
                 docker login ghcr.io -u $USERNAME --password $PAT;
-                docker stop $(docker ps -aq);
-                docker rmi $(docker images -q);
-                docker run -d -p 80:80 ghcr.io/satyanarayana-zemoso/bootcamp26-app-frontend:v$RUN_NUMBER;
+                docker stop frontend || true;
+                docker rm frontend || true;
+                docker run -d -p 80:80 --name frontend ghcr.io/satyanarayana-zemoso/bootcamp26-app-frontend:v$RUN_NUMBER;
                 docker logout ghcr.io;
             "
             rm -rf ~/ssh_private_key
