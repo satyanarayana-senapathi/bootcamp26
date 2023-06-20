@@ -1,41 +1,24 @@
-name: build react app image and push to github packages
+name: deploy mock server to ghcr and ec2
+
 on:
   push:
     paths:
-      - 'frontend/**'
-      - '!frontend/src/mockData/**'
-      - '.github/workflows/frontend.yml'
+      - 'rontend/src/mockData/**'
+      - '.github/workflows/mock-server.yml'
+
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     defaults:
-        run:
-          working-directory: frontend
-
-
+      run: 
+        working-directory: frontend/src/mockData
+    
     steps:
+      
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        with:
-          path: frontend/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install
-
-      - name: Build application
-        run: npm run build
-
+    
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
@@ -46,10 +29,10 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
-          context: ./frontend
+          context: ./frontend/src/mockData
           push: true
-          tags: ghcr.io/${{ github.actor }}/bootcamp26-app-frontend:v${{ github.run_number }}
-    
+          tags: ghcr.io/${{ github.actor }}/bootcamp26-app-mockServer:v${{ github.run_number }}
+
       - name: SSH into remote server
         env:
           SSH_PRIVATE_KEY: ${{ secrets.BOOTCAMP_EC2_KEY }} 
@@ -62,10 +45,15 @@ jobs:
             chmod 400 ~/ssh_private_key
             ssh -i ~/ssh_private_key -o StrictHostKeyChecking=no ubuntu@$AWS_DNS "
                 docker login ghcr.io -u $USERNAME --password $PAT;
-                docker stop frontend 2>/dev/null;
-                docker rm frontend 2>/dev/null;
-                docker run -d -p 80:80 --name frontend ghcr.io/satyanarayana-zemoso/bootcamp26-app-frontend:v$RUN_NUMBER;
+                docker stop mockServer 2>/dev/null;
+                docker rm mockServer 2>/dev/null;
+                docker run -d -p 3001:3001 --name mockServer ghcr.io/satyanarayana-zemoso/bootcamp26-app-mockServer:v$RUN_NUMBER;
                 docker logout ghcr.io;
             "
             rm -rf ~/ssh_private_key
-        
+
+
+
+            
+
+      
