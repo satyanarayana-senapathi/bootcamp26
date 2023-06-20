@@ -45,9 +45,9 @@ jobs:
             chmod 400 ~/ssh_private_key
             ssh -i ~/ssh_private_key -o StrictHostKeyChecking=no ubuntu@$AWS_DNS "
                 docker login ghcr.io -u $USERNAME --password $PAT;
-                docker stop mockServer 2>/dev/null;
-                docker rm mockServer 2>/dev/null;
-                docker run -d -p 3001:3001 --name mockServer ghcr.io/satyanarayana-zemoso/bootcamp26-app-mockserver:v$RUN_NUMBER;
+                docker stop mockserver 2>/dev/null;
+                docker rm mockserver 2>/dev/null;
+                docker run -d -p 3001:3001 --name mockserver ghcr.io/satyanarayana-zemoso/bootcamp26-app-mockserver:v$RUN_NUMBER;
                 docker logout ghcr.io;
             "
             rm -rf ~/ssh_private_key
