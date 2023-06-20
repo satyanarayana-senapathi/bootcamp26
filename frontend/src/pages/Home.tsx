@@ -3,6 +3,7 @@ import { styled } from "@mui/material";
 import Button from "../components/atoms/Button";
 import Typography from "../components/atoms/Typography";
 import Image from "../components/atoms/Image";
+import emptyState from "../assets/icons/empty-state.svg"
 
 const StyledTypography = styled(Typography)(
   () =>
@@ -70,7 +71,7 @@ const Home: React.FC = () => {
         <StyledButton variant="contained" data-cy="start-journey-button">Start your Journey</StyledButton>
       </StyledDiv>
       <StyledImgDiv>
-        <Image src="/assets/empty-state.svg" data-cy="empty-state-image"></Image>
+        <Image src={emptyState} data-cy="empty-state-image"></Image>
       </StyledImgDiv>
     </StyledWrapper>
   );
