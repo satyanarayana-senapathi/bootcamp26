@@ -1,4 +1,4 @@
-name: Deploy from GHCR to AWS EC2
+name: Deploy backend to GHCR aand EC2
 
 on:
   push:
@@ -54,9 +54,9 @@ jobs:
           chmod 400 ~/ssh_private_key
           ssh -i ~/ssh_private_key -o StrictHostKeyChecking=no ubuntu@$AWS_DNS "
             docker login ghcr.io -u $USERNAME --password $PAT;
-            docker stop $(sudo docker ps -aq);
-            docker rmi $(sudo docker images -q);
-            docker run -d -p 8090:8090 ghcr.io/satyanarayana-zemoso/bootcamp26-app-backend:v$RUN_NUMBER;
+            docker stop backend || true;
+            docker rm backend || true;
+            docker run -d -p 8090:8090 --name backend ghcr.io/satyanarayana-zemoso/bootcamp26-app-backend:v$RUN_NUMBER;
             docker logout ghcr.io;
             "
             rm -rf ~/ssh_private_key
