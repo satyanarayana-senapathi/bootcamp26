@@ -47,7 +47,7 @@ jobs:
                 docker login ghcr.io -u $USERNAME --password $PAT;
                 docker stop mockServer 2>/dev/null;
                 docker rm mockServer 2>/dev/null;
-                docker run -d -p 3001:3001 --name mockServer ghcr.io/satyanarayana-zemoso/bootcamp26-app-mockServer:v$RUN_NUMBER;
+                docker run -d -p 3001:3001 --name mockServer ghcr.io/satyanarayana-zemoso/bootcamp26-app-mockserver:v$RUN_NUMBER;
                 docker logout ghcr.io;
             "
             rm -rf ~/ssh_private_key
