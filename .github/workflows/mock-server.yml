@@ -7,7 +7,7 @@ on:
       - '.github/workflows/mock-server.yml'
 
 jobs:
-  build:
+  build:    
     runs-on: ubuntu-latest
     timeout-minutes: 10
     
