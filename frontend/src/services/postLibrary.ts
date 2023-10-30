@@ -1,5 +1,5 @@
 import { PostLibrary } from "../utils/messages/proptypes";
-import API from "./API";
+import {API} from "./API";
 
 const postLibrary = async (url: string, data: PostLibrary) => {
   const res = await API.post(url, data);
